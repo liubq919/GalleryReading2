@@ -15,6 +15,15 @@
         android:layout_marginTop="15dp"
         android:text="@string/pick_button" />
 
+    <Button
+        android:id="@+id/btn_to_gray"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:text="@string/to_gray_button" />
+
     <ImageView
         android:id="@+id/image"
         android:layout_width="wrap_content"

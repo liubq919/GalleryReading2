@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 
@@ -24,7 +25,10 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
     // GUI components
     private Button button;	// The button
-    private ImageView image;// ImageView
+    //灰度化图片按钮
+    private Button btnToGray;
+    // ImageView
+    private ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +36,23 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         setContentView(R.layout.activity_main);
         // Find references to the GUI objects
         button = (Button)findViewById(R.id.button);
+        btnToGray = (Button)findViewById(R.id.btn_to_gray);
         image = (ImageView)findViewById(R.id.image);
 
         // Set button's onClick listener object.
         button.setOnClickListener(this);
 
+        btnToGray = (Button)findViewById(R.id.btn_to_gray);
+        btnToGray.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(MainActivity.this, "即将转入灰度化页面！", Toast.LENGTH_SHORT).show();
+
+                Intent intentToPicGray = new Intent(MainActivity.this, PicToGray.class);
+                startActivity(intentToPicGray);
+            }
+        });
     }
 
 

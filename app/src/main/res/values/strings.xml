@@ -6,5 +6,6 @@
     <string name="app_name">图片读取</string>
     <string name="menu_settings">设置</string>
     <string name="pick_button">选择图片</string>
-
+    <string name="to_gray_button">灰度化图片</string>
+    <string name="start_to_gray_button">开始灰度化图片</string>
 </resources>
