@@ -1,6 +1,5 @@
 package com.example.hilcg.galleryreading2;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -37,10 +36,13 @@ public class PicToGray extends ActionBarActivity {
         BitmapDrawable bd = (BitmapDrawable)drawable;
         final Bitmap bitmap = bd.getBitmap();
 
+        final int width = bitmap.getWidth();
+        final int height = bitmap.getHeight();
+
         btnStartToGray.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(PicToGray.this, "你点击了按钮！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(PicToGray.this, "图片属性: width: " + width + "; height: " + height + "GetPixel():" + bitmap.getPixel(100, 100), Toast.LENGTH_SHORT).show();
                 imageView.setImageBitmap(CommonUtility.bitmap2Gray(bitmap));
             }
         });
