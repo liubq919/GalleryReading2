@@ -35,23 +35,21 @@ public class CommonUtility {
 
     public static List<Integer> sortIndexOfList( ArrayList<Integer> list)
     {
-        public static List<Integer> sortIndexOfList( ArrayList<Integer> list)
+        if ( 0 == list.size())
         {
-            if ( 0 == list.size())
-            {
-                return null;
-            }
+            return null;
+        }
 
-            ArrayList<Integer> unSortedList = new ArrayList<Integer>();
-            unSortedList = (ArrayList<Integer>)list.clone();
+        ArrayList<Integer> unSortedList = new ArrayList<Integer>();
+        unSortedList = (ArrayList<Integer>)list.clone();
 
-            Collections.sort(list);
-            Collections.reverse(list);
+        Collections.sort(list);
+        Collections.reverse(list);
 
-            System.out.println(list);
-            System.out.println(unSortedList);
+        System.out.println(list);
+        System.out.println(unSortedList);
 
-            ArrayList<Integer> sortedIndexOfArrayList = new ArrayList<Integer>();
+        ArrayList<Integer> sortedIndexOfArrayList = new ArrayList<Integer>();
 
 //
 //        for( int i = 0; i < unSortedList.size(); i ++ )
@@ -73,7 +71,7 @@ public class CommonUtility {
 //
 //        }
 
-            return sortedIndexOfArrayList;
+        return sortedIndexOfArrayList;
 
     }
 }
