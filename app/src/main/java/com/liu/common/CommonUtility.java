@@ -42,34 +42,27 @@ public class CommonUtility {
 
         ArrayList<Integer> unSortedList = new ArrayList<Integer>();
         unSortedList = (ArrayList<Integer>)list.clone();
+        System.out.println( "j:" + unSortedList);
 
         Collections.sort(list);
         Collections.reverse(list);
 
-        System.out.println(list);
-        System.out.println(unSortedList);
+        System.out.println( "i:" + list);
 
         ArrayList<Integer> sortedIndexOfArrayList = new ArrayList<Integer>();
 
-//
-//        for( int i = 0; i < unSortedList.size(); i ++ )
-//        {
-//
-//            System.out.println(unSortedList.get(i) + ", ");
-//
-//            for ( int j = 0; j < list.size(); j ++ )
-//            {
-//
-//                System.out.print(list.get(j) + ", ");
-//
-//                if ( list.get(j) == unSortedList.get(i) )
-//                {
-//                    System.out.println(list.get(j));
-//                }
-//            }
-//            System.out.println();
-//
-//        }
+        for ( int i = 0; i < unSortedList.size(); i ++ )
+        {
+            for ( int j = 0; j < list.size(); j ++ )
+            {
+                if ( list.get(j) == unSortedList.get(i) )
+                {
+//                    System.out.println("i: " + i + "; " + "j: " + j + ", Current Value:" + list.get(i));
+
+                    sortedIndexOfArrayList.add( j + 1);
+                }
+            }
+        }
 
         return sortedIndexOfArrayList;
 

@@ -169,7 +169,7 @@ public class PicToGray extends ActionBarActivity {
 
 //                Toast.makeText(PicToGray.this, "a:" + a + ";b:" + b, Toast.LENGTH_LONG).show();
 
-                Toast.makeText(PicToGray.this, "brightVauleList:" + brightVauleList, Toast.LENGTH_LONG).show();
+                Toast.makeText(PicToGray.this, "brightVauleList:" + CommonUtility.sortIndexOfList(brightVauleList), Toast.LENGTH_LONG).show();
 
                 imageView.setImageBitmap(CommonUtility.bitmap2Gray(bitmap));
             }
