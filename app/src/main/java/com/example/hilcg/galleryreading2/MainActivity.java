@@ -104,9 +104,15 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
     @Override
     public void onClick(View v) {
         // Create the Intent for Image Gallery.
-        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//        Intent i = new Intent(Intent.Action_SE, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), LOAD_IMAGE_RESULTS);
+
 
         // Start new activity with the LOAD_IMAGE_RESULTS to handle back the results when image is picked from the Image Gallery.
-        startActivityForResult(i, LOAD_IMAGE_RESULTS);
+//        startActivityForResult(i, LOAD_IMAGE_RESULTS);
     }
 }
