@@ -34,11 +34,7 @@ public class ImageUtil {
         return bmpGray;
     }
 
-<<<<<<< HEAD
     //获取某一像素点的亮度值
-=======
-    //获取某一个像素点的亮度值
->>>>>>> origin/master
     public static int getBrightness(int color)
     {
         int r = (color & 0x00ff0000) >> 16;
