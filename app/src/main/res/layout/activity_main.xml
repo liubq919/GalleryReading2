@@ -20,17 +20,11 @@
         android:layout_height="wrap_content"
         android:text="@string/go_select"
         android:id="@+id/button"/>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-    </ScrollView>
+    
+    <GridView
+        android:id="@+id/grid_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numColumns="3"/>
 
 </LinearLayout>
