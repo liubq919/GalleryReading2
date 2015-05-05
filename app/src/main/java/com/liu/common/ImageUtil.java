@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ImageUtil {
 
-    //»Ò¶È»¯Í¼Æ¬
+    //ç°åº¦åŒ–å›¾ç‰‡
     public static Bitmap bitmap2Gray(Bitmap bmSrc)
     {
         int width, height;
@@ -34,7 +34,7 @@ public class ImageUtil {
         return bmpGray;
     }
 
-    //»ñÈ¡ÏñËØµãµÄÁÁ¶ÈÖµ
+    //è·å–æŸä¸€åƒç´ ç‚¹çš„äº®åº¦å€¼
     public static int getBrightness(int color)
     {
         int r = (color & 0x00ff0000) >> 16;
@@ -46,7 +46,7 @@ public class ImageUtil {
         return y;
     }
 
-    //»ñÈ¡Í¼Æ¬µÄOMÌØÕ÷
+    //è·å–å›¾ç‰‡çš„OMå€¼
     public static List getOMOfPic(Bitmap bitmap)
     {
         if ( bitmap == null )
