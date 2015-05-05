@@ -3,6 +3,7 @@ package com.example.hilcg.galleryreading2;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Activity;
@@ -15,8 +16,15 @@ import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
 public class MainActivity extends ActionBarActivity implements OnClickListener {
 
@@ -30,6 +38,14 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
     // ImageView
     private ImageView image;
 
+    private static final int REQUEST_IMAGE = 2;
+
+    private TextView mResultText;
+    private RadioGroup mChoiceMode, mShowCamera;
+    private EditText mRequestNum;
+
+    private ArrayList<String> mSelectPath;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +54,23 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         button = (Button)findViewById(R.id.button);
         btnToGray = (Button)findViewById(R.id.btn_to_gray);
         image = (ImageView)findViewById(R.id.image);
+
+        mResultText = (TextView) findViewById(R.id.result);
+        mChoiceMode = (RadioGroup) findViewById(R.id.choice_mode);
+        mShowCamera = (RadioGroup) findViewById(R.id.show_camera);
+        mRequestNum = (EditText) findViewById(R.id.request_num);
+
+        mChoiceMode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                if(checkedId == R.id.multi){
+                    mRequestNum.setEnabled(true);
+                }else{
+                    mRequestNum.setEnabled(false);
+                    mRequestNum.setText("");
+                }
+            }
+        });
 
         // Set button's onClick listener object.
         button.setOnClickListener(this);
@@ -51,6 +84,41 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
                 Intent intentToPicGray = new Intent(MainActivity.this, PicToGray.class);
                 startActivity(intentToPicGray);
+            }
+        });
+
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
+
+                if (mChoiceMode.getCheckedRadioButtonId() == R.id.single) {
+                    selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
+                } else {
+                    selectedMode = MultiImageSelectorActivity.MODE_MULTI;
+                }
+
+                boolean showCamera = mShowCamera.getCheckedRadioButtonId() == R.id.show;
+
+                int maxNum = 9;
+                if (!TextUtils.isEmpty(mRequestNum.getText())) {
+                    maxNum = Integer.valueOf(mRequestNum.getText().toString());
+                }
+
+                Intent intent = new Intent(MainActivity.this, MultiImageSelectorActivity.class);
+                // 是否显示拍摄图片
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, showCamera);
+                // 最大可选择图片数量
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, maxNum);
+                // 选择模式
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, selectedMode);
+                // 默认选择
+                if (mSelectPath != null && mSelectPath.size() > 0) {
+                    intent.putExtra(MultiImageSelectorActivity.EXTRA_DEFAULT_SELECTED_LIST, mSelectPath);
+                }
+                startActivityForResult(intent, REQUEST_IMAGE);
+
             }
         });
     }
