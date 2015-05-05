@@ -28,50 +28,21 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
     // Image loading result to pass to startActivityForResult method.
     private static int LOAD_IMAGE_RESULTS = 1;
 
-    // GUI components
-    private Button button;	// The button
-    //灰度化图片按钮
-    private Button btnToGray;
-    // ImageView
-    private ImageView image;
-
     private static final int REQUEST_IMAGE = 2;
-
-    private TextView mResultText;
-    private RadioGroup mChoiceMode, mShowCamera;
-    private EditText mRequestNum;
 
     private ArrayList<String> mSelectPath;
 
+    private TextView mResultText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Find references to the GUI objects
-        button = (Button)findViewById(R.id.button);
-        btnToGray = (Button)findViewById(R.id.btn_to_gray);
-        image = (ImageView)findViewById(R.id.image);
 
         mResultText = (TextView) findViewById(R.id.result);
-        mChoiceMode = (RadioGroup) findViewById(R.id.choice_mode);
-        mShowCamera = (RadioGroup) findViewById(R.id.show_camera);
-        mRequestNum = (EditText) findViewById(R.id.request_num);
 
-        mChoiceMode.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                if(checkedId == R.id.multi){
-                    mRequestNum.setEnabled(true);
-                }else{
-                    mRequestNum.setEnabled(false);
-                    mRequestNum.setText("");
-                }
-            }
-        });
-
-        // Set button's onClick listener object.
-        button.setOnClickListener(this);
-
+        /**
         btnToGray = (Button)findViewById(R.id.btn_to_gray);
         btnToGray.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +54,7 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
                 startActivity(intentToPicGray);
             }
         });
+        **/
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,24 +62,11 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
 
                 int selectedMode = MultiImageSelectorActivity.MODE_MULTI;
 
-                if (mChoiceMode.getCheckedRadioButtonId() == R.id.single) {
-                    selectedMode = MultiImageSelectorActivity.MODE_SINGLE;
-                } else {
-                    selectedMode = MultiImageSelectorActivity.MODE_MULTI;
-                }
-
-                boolean showCamera = mShowCamera.getCheckedRadioButtonId() == R.id.show;
-
-                int maxNum = 9;
-                if (!TextUtils.isEmpty(mRequestNum.getText())) {
-                    maxNum = Integer.valueOf(mRequestNum.getText().toString());
-                }
-
                 Intent intent = new Intent(MainActivity.this, MultiImageSelectorActivity.class);
                 // 是否显示拍摄图片
-                intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, showCamera);
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SHOW_CAMERA, false);
                 // 最大可选择图片数量
-                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, maxNum);
+                intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_COUNT, 9);
                 // 选择模式
                 intent.putExtra(MultiImageSelectorActivity.EXTRA_SELECT_MODE, selectedMode);
                 // 默认选择
@@ -149,6 +108,8 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
         // Here we need to check if the activity that was triggers was the Image Gallery.
         // If it is the requestCode will match the LOAD_IMAGE_RESULTS value.
         // If the resultCode is RESULT_OK and there is some data we know that an image was picked.
+
+
         if (requestCode == LOAD_IMAGE_RESULTS && resultCode == RESULT_OK && data != null) {
             // Let's read picked image data - its URI
             Uri pickedImage = data.getData();
@@ -159,10 +120,24 @@ public class MainActivity extends ActionBarActivity implements OnClickListener {
             String imagePath = cursor.getString(cursor.getColumnIndex(filePath[0]));
 
             // Now we need to set the GUI ImageView data with data read from the picked file.
-            image.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+            //image.setImageBitmap(BitmapFactory.decodeFile(imagePath));
 
             // At the end remember to close the cursor or you will end with the RuntimeException!
             cursor.close();
+        }
+
+        if( requestCode == REQUEST_IMAGE )
+        {
+            if( resultCode == RESULT_OK )
+            {
+                mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
+                StringBuilder sb = new StringBuilder();
+                for(String p: mSelectPath){
+                    sb.append(p);
+                    sb.append("\n");
+                }
+                mResultText.setText(sb.toString());
+            }
         }
     }
 
