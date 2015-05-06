@@ -26,16 +26,19 @@ import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
 public class MainActivity extends ActionBarActivity {
 
-    // Image loading result to pass to startActivityForResult method.
-    private static int LOAD_IMAGE_RESULTS = 1;
-
     private static final int REQUEST_IMAGE = 2;
 
     private ArrayList<String> mSelectPath;
 
-    private TextView mResultText;
-
-    private GridView gridView;
+    private ImageView imageView1;
+    private ImageView imageView2;
+    private ImageView imageView3;
+    private ImageView imageView4;
+    private ImageView imageView5;
+    private ImageView imageView6;
+    private ImageView imageView7;
+    private ImageView imageView8;
+    private ImageView imageView9;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,15 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mResultText = (TextView) findViewById(R.id.result);
-        gridView = (GridView) findViewById(R.id.grid_view);
+        imageView1 = (ImageView) findViewById(R.id.image_view_1);
+        imageView2 = (ImageView) findViewById(R.id.image_view_2);
+        imageView3 = (ImageView) findViewById(R.id.image_view_3);
+        imageView4 = (ImageView) findViewById(R.id.image_view_4);
+        imageView5 = (ImageView) findViewById(R.id.image_view_5);
+        imageView6 = (ImageView) findViewById(R.id.image_view_6);
+        imageView7 = (ImageView) findViewById(R.id.image_view_7);
+        imageView8 = (ImageView) findViewById(R.id.image_view_8);
+        imageView9 = (ImageView) findViewById(R.id.image_view_9);
 
         /**
         btnToGray = (Button)findViewById(R.id.btn_to_gray);
@@ -114,10 +124,42 @@ public class MainActivity extends ActionBarActivity {
             mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
 
             // Now we need to set the GUI ImageView data with data read from the picked file.
-            //imageView.setImageBitmap(BitmapFactory.decodeFile(mSelectPath.get(0)));
-
+            if ( mSelectPath.get(0) != null )
+            {
+                imageView1.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(0) ));
+            }
+            if ( mSelectPath.get(1) != null )
+            {
+                imageView2.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(1) ));
+            }
+            if ( mSelectPath.get(2) != null )
+            {
+                imageView3.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(2) ));
+            }
+            if ( mSelectPath.get(3) != null )
+            {
+                imageView4.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(3) ));
+            }
+            if ( mSelectPath.get(4) != null )
+            {
+                imageView5.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(4) ));
+            }
+            if ( mSelectPath.get(5) != null )
+            {
+                imageView6.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(5) ));
+            }
+            if ( mSelectPath.get(6) != null )
+            {
+                imageView7.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(6) ));
+            }
+            if ( mSelectPath.get(7) != null )
+            {
+                imageView8.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(7) ));
+            }
+            if ( mSelectPath.get(8) != null )
+            {
+                imageView9.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(8) ));
+            }
         }
-
     }
-
 }

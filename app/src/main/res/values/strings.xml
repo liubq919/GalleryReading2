@@ -10,7 +10,7 @@
     <string name="app_name">MultiImageSelector</string>
 
     <string name="action_settings">Settings</string>
-    <string name="max_select_amount">最多可以选择的图片:9</string>
+
     <string name="go_select">选择图片</string>
 
 </resources>
