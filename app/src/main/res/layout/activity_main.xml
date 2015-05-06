@@ -21,7 +21,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/to_gray_button"
+        android:text="@string/start_cal"
         android:id="@+id/btn_to_gray"/>
 
     <ImageView

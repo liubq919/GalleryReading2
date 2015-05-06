@@ -121,42 +121,52 @@ public class MainActivity extends ActionBarActivity {
 
         if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null) {
 
+            imageView1.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView2.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView3.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView4.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView5.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView6.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView7.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView8.setImageBitmap(BitmapFactory.decodeFile( null ));
+            imageView9.setImageBitmap(BitmapFactory.decodeFile( null ));
+
             mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
 
             // Now we need to set the GUI ImageView data with data read from the picked file.
-            if ( mSelectPath.get(0) != null )
+            if ( mSelectPath.size() > 0 && mSelectPath.get(0) != null )
             {
                 imageView1.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(0) ));
             }
-            if ( mSelectPath.get(1) != null )
+            if ( mSelectPath.size() > 1 && mSelectPath.get(1) != null )
             {
                 imageView2.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(1) ));
             }
-            if ( mSelectPath.get(2) != null )
+            if ( mSelectPath.size() > 2 && mSelectPath.get(2) != null )
             {
                 imageView3.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(2) ));
             }
-            if ( mSelectPath.get(3) != null )
+            if ( mSelectPath.size() > 3 && mSelectPath.get(3) != null )
             {
                 imageView4.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(3) ));
             }
-            if ( mSelectPath.get(4) != null )
+            if ( mSelectPath.size() > 4 && mSelectPath.get(4) != null )
             {
                 imageView5.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(4) ));
             }
-            if ( mSelectPath.get(5) != null )
+            if ( mSelectPath.size() > 5 && mSelectPath.get(5) != null )
             {
                 imageView6.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(5) ));
             }
-            if ( mSelectPath.get(6) != null )
+            if ( mSelectPath.size() > 6 && mSelectPath.get(6) != null )
             {
                 imageView7.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(6) ));
             }
-            if ( mSelectPath.get(7) != null )
+            if ( mSelectPath.size() > 7 && mSelectPath.get(7) != null )
             {
                 imageView8.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(7) ));
             }
-            if ( mSelectPath.get(8) != null )
+            if ( mSelectPath.size() > 8 && mSelectPath.get(8) != null )
             {
                 imageView9.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(8) ));
             }
