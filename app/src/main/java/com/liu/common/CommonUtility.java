@@ -43,4 +43,22 @@ public class CommonUtility {
         return sortedIndexOfArrayList;
 
     }
+
+    public double distanceBetOM(List<Integer> listA, List<Integer> listB)
+    {
+        double disBetOM = 0;
+
+        for ( int i = 0; i < listA.size(); i ++ )
+        {
+            disBetOM = disBetOM + Math.pow((listA.get(i) - listB.get(i)), 2);
+        }
+
+        return Math.sqrt(disBetOM);
+    }
+
+
+
+
+
+
 }

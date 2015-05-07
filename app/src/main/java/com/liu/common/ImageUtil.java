@@ -47,7 +47,7 @@ public class ImageUtil {
     }
 
     //获取图片的OM值
-    public static List getOMOfPic(Bitmap bitmap)
+    public static List<Integer> getOMOfPic(Bitmap bitmap)
     {
         if ( bitmap == null )
         {
@@ -57,11 +57,9 @@ public class ImageUtil {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
 
-        int color = bitmap.getPixel(0, 0);
-
         Bitmap bitMapToGray = ImageUtil.bitmap2Gray(bitmap);
 
-        ArrayList<Integer> brightVauleList = new ArrayList<>();
+        ArrayList<Integer> brightVauleList = new ArrayList<Integer>();
 
         int allPixel = ( width / 3 ) * ( height / 3);
 

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.database.Cursor;
@@ -20,6 +21,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.liu.common.ImageUtil;
+
 import java.util.ArrayList;
 
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
@@ -29,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
     private static final int REQUEST_IMAGE = 2;
 
     private ArrayList<String> mSelectPath;
+
+    private Button btnToStartCal;
 
     private ImageView imageView1;
     private ImageView imageView2;
@@ -46,6 +51,8 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnToStartCal = (Button)findViewById(R.id.btn_to_start_cal);
+
         imageView1 = (ImageView) findViewById(R.id.image_view_1);
         imageView2 = (ImageView) findViewById(R.id.image_view_2);
         imageView3 = (ImageView) findViewById(R.id.image_view_3);
@@ -56,19 +63,59 @@ public class MainActivity extends ActionBarActivity {
         imageView8 = (ImageView) findViewById(R.id.image_view_8);
         imageView9 = (ImageView) findViewById(R.id.image_view_9);
 
-        /**
-        btnToGray = (Button)findViewById(R.id.btn_to_gray);
-        btnToGray.setOnClickListener(new View.OnClickListener() {
+        btnToStartCal.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(MainActivity.this, "即将转入灰度化页面！", Toast.LENGTH_SHORT).show();
+                if ( mSelectPath.size() > 0 && mSelectPath.get(0) != null )
+                {
+//                    Log.i("OM of Pic1:！", ImageUtil.getOMOfPic(BitmapFactory.decodeFile(mSelectPath.get(0))).toString());
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(0) )), Toast.LENGTH_SHORT).show();
+                }
 
-                Intent intentToPicGray = new Intent(MainActivity.this, PicToGray.class);
-                startActivity(intentToPicGray);
+                if ( mSelectPath.size() > 1 && mSelectPath.get(1) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(1) )), Toast.LENGTH_SHORT).show();
+                }
+
+                if ( mSelectPath.size() > 2 && mSelectPath.get(2) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(2) )), Toast.LENGTH_SHORT).show();
+                }
+
+                if ( mSelectPath.size() > 3 && mSelectPath.get(3) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(3) )), Toast.LENGTH_SHORT).show();
+                }
+
+                if ( mSelectPath.size() > 4 && mSelectPath.get(4) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(4) )), Toast.LENGTH_SHORT).show();
+                }
+
+                if ( mSelectPath.size() > 5 && mSelectPath.get(5) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(5) )), Toast.LENGTH_SHORT).show();
+                }
+
+                if ( mSelectPath.size() > 6 && mSelectPath.get(6) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(6) )), Toast.LENGTH_SHORT).show();
+                }
+
+                if ( mSelectPath.size() > 7 && mSelectPath.get(7) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(7) )), Toast.LENGTH_SHORT).show();
+                }
+
+                if ( mSelectPath.size() > 8 && mSelectPath.get(8) != null )
+                {
+                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(8) )), Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
-        **/
 
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/start_cal"
-        android:id="@+id/btn_to_gray"/>
+        android:id="@+id/btn_to_start_cal"/>
 
     <ImageView
         android:layout_width="@dimen/photo_width"
