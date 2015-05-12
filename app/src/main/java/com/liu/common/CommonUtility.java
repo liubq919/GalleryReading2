@@ -4,7 +4,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by hilcg on 2015/4/9.
@@ -46,7 +48,7 @@ public class CommonUtility {
 
     }
 
-    public boolean distanceBetOMAndOverThre(List<Integer> listA, List<Integer> listB)
+    public static boolean distanceBetOMAndOverThre(List<Integer> listA, List<Integer> listB)
     {
         double disBetOM = 0;
 
@@ -55,7 +57,7 @@ public class CommonUtility {
             disBetOM = disBetOM + Math.pow((listA.get(i) - listB.get(i)), 2);
         }
 
-        return Math.sqrt(disBetOM) >  2 ? true : false;
+        return Math.sqrt(disBetOM) < 10 ? true : false;
     }
 
     public static double distanceBetOM(List<Integer> listA, List<Integer> listB)
@@ -80,7 +82,7 @@ public class CommonUtility {
         {
             ArrayList listTemp = new ArrayList<Double>();
 
-            for ( int j = 0; j < allPicOMList.size(); j ++ )
+            for ( int j = i + 1 ; j < allPicOMList.size(); j ++ )
             {
                 if ( i == j )
                 {
@@ -90,12 +92,37 @@ public class CommonUtility {
                 double distance = distanceBetOM(allPicOMList.get(i), allPicOMList.get(j));
 
                 listTemp.add(distance);
-            }
 
-            allOMList.add(listTemp);
+                allOMList.add(listTemp);
+            }
         }
 
-        Log.e("AllOMlist", allOMList.toString());
+        System.out.println("AllOMlist:" + allOMList.toString());
     }
 
+    public static Set<Integer> isTheSamePic(List<List<Integer>> allPicOMList)
+    {
+
+        Set<Integer> allSamePicIndexSet = new HashSet<Integer>();
+
+        for ( int i = 0; i < allPicOMList.size(); i ++ )
+        {
+
+            for ( int j = i + 1 ; j < allPicOMList.size(); j ++ )
+            {
+
+                if ( distanceBetOMAndOverThre( allPicOMList.get(i), allPicOMList.get(j)) )
+                {
+                    allSamePicIndexSet.add(i);
+                    allSamePicIndexSet.add(j);
+                }
+
+            }
+        }
+
+        System.out.println("allSamePicIndex1:" + allSamePicIndexSet.toString());
+        Log.e("allSamePicIndex2:", allSamePicIndexSet.toString());
+
+        return allSamePicIndexSet;
+    }
 }

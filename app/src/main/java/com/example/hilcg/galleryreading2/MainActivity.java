@@ -88,7 +88,7 @@ public class MainActivity extends ActionBarActivity {
                     pic1OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(0) ));
                     allPicOMList.add(pic1OM);
 
-                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + pic1OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + pic1OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 1 && mSelectPath.get(1) != null )
@@ -96,59 +96,60 @@ public class MainActivity extends ActionBarActivity {
                     pic2OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(1) ));
                     allPicOMList.add(pic2OM);
 
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic2OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic2OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 2 && mSelectPath.get(2) != null )
                 {
                     pic3OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(2) ));
                     allPicOMList.add(pic3OM);
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic3OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic3OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 3 && mSelectPath.get(3) != null )
                 {
                     pic4OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(3) ));
                     allPicOMList.add(pic4OM);
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic4OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic4OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 4 && mSelectPath.get(4) != null )
                 {
                     pic5OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(4) ));
                     allPicOMList.add(pic5OM);
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic5OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic5OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 5 && mSelectPath.get(5) != null )
                 {
                     pic6OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(5) ));
                     allPicOMList.add(pic6OM);
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic6OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic6OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 6 && mSelectPath.get(6) != null )
                 {
                     pic7OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(6) ));
                     allPicOMList.add(pic7OM);
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic7OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic7OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 7 && mSelectPath.get(7) != null )
                 {
                     pic8OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(7) ));
                     allPicOMList.add(pic8OM);
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic8OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic8OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 8 && mSelectPath.get(8) != null )
                 {
                     pic9OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(8) ));
                     allPicOMList.add(pic9OM);
-                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic9OM, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic9OM, Toast.LENGTH_SHORT).show();
                 }
 
-                CommonUtility.compareOMOfAllPic(allPicOMList);
+//                CommonUtility.compareOMOfAllPic(allPicOMList);
+                CommonUtility.isTheSamePic(allPicOMList);
 
             }
         });
