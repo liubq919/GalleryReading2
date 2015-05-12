@@ -44,7 +44,7 @@ public class CommonUtility {
 
     }
 
-    public double distanceBetOM(List<Integer> listA, List<Integer> listB)
+    public boolean distanceBetOM(List<Integer> listA, List<Integer> listB)
     {
         double disBetOM = 0;
 
@@ -53,7 +53,7 @@ public class CommonUtility {
             disBetOM = disBetOM + Math.pow((listA.get(i) - listB.get(i)), 2);
         }
 
-        return Math.sqrt(disBetOM);
+        return Math.sqrt(disBetOM) >  2 ? true : false;
     }
 
 
