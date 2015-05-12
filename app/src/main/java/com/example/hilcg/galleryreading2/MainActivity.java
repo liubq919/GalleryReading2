@@ -21,6 +21,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.liu.common.CommonUtility;
 import com.liu.common.ImageUtil;
 
 import java.util.ArrayList;
@@ -146,6 +147,8 @@ public class MainActivity extends ActionBarActivity {
                     allPicOMList.add(pic9OM);
                     Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic9OM, Toast.LENGTH_SHORT).show();
                 }
+
+                CommonUtility.compareOMOfAllPic(allPicOMList);
 
             }
         });
