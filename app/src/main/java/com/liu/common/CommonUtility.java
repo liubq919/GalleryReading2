@@ -4,8 +4,11 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -50,14 +53,8 @@ public class CommonUtility {
 
     public static boolean distanceBetOMAndOverThre(List<Integer> listA, List<Integer> listB)
     {
-        double disBetOM = 0;
 
-        for ( int i = 0; i < listA.size(); i ++ )
-        {
-            disBetOM = disBetOM + Math.pow((listA.get(i) - listB.get(i)), 2);
-        }
-
-        return Math.sqrt(disBetOM) < 10 ? true : false;
+        return distanceBetOM( listA, listB) < 10 ? true : false;
     }
 
     public static double distanceBetOM(List<Integer> listA, List<Integer> listB)
@@ -120,9 +117,66 @@ public class CommonUtility {
             }
         }
 
-        System.out.println("allSamePicIndex1:" + allSamePicIndexSet.toString());
-        Log.e("allSamePicIndex2:", allSamePicIndexSet.toString());
+//        System.out.println("allSamePicIndex1:" + allSamePicIndexSet.toString());
+//        Log.e("allSamePicIndex2:", allSamePicIndexSet.toString());
 
         return allSamePicIndexSet;
+    }
+
+
+    public static Set<Integer> remSamePic(List<List<Integer>> allPicOMList)
+    {
+
+        Map<Integer, Double> allDisBetMap = new HashMap<Integer, Double>();
+
+        for ( int i = 0 ; i < allPicOMList.size(); i ++ )
+        {
+
+            List<Integer> tempPicOM = allPicOMList.get(i);
+
+            for ( int j = 0; j < allPicOMList.size(); j ++ )
+            {
+                if ( i == j )
+                {
+                    continue;
+                }
+
+                if ( allDisBetMap.get(i) == null )
+                {
+                    allDisBetMap.put(i, distanceBetOM(tempPicOM, allPicOMList.get(j)));
+                }
+                else
+                {
+                    allDisBetMap.put(i, allDisBetMap.get(i) + distanceBetOM(tempPicOM, allPicOMList.get(j)));
+                }
+            }
+        }
+
+        Iterator<Integer> iter = allDisBetMap.keySet().iterator();
+
+        while (iter.hasNext()) {
+
+            Integer key = iter.next();
+            Double value = allDisBetMap.get(key);
+
+            System.out.println("key: " + key + "; value:" + value);
+
+        }
+
+        return null;
+    }
+
+    public static List<List<Integer>> removeUnSamePic(Set<Integer> allSamePics, List<List<Integer>> allPicOMList)
+    {
+        Iterator<Integer> iterator = allSamePics.iterator();
+
+        List<List<Integer>> allSamePicOMlist = new ArrayList<List<Integer>>();
+
+        while ( iterator.hasNext() )
+        {
+            allSamePicOMlist.add(allPicOMList.get(iterator.next()));
+        }
+
+        return allSamePicOMlist;
     }
 }

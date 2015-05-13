@@ -149,7 +149,16 @@ public class MainActivity extends ActionBarActivity {
                 }
 
 //                CommonUtility.compareOMOfAllPic(allPicOMList);
-                CommonUtility.isTheSamePic(allPicOMList);
+                if ( 2 == CommonUtility.isTheSamePic(allPicOMList).size() )
+                {
+
+                }
+                else
+                {
+
+                }
+
+
 
             }
         });
