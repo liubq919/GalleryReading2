@@ -5,6 +5,7 @@ import android.graphics.Canvas;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Paint;
+import android.os.Build;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,5 +171,18 @@ public class ImageUtil {
         brightVauleList.add(iPart / allPixel);
 
         return CommonUtility.sortIndexOfList(brightVauleList);
+    }
+
+    public static int getBitmapSize(Bitmap bitmap)
+    {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){    //API 19
+            return bitmap.getAllocationByteCount();
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1){//API 12
+            return bitmap.getByteCount();
+        }
+
+        return bitmap.getRowBytes() * bitmap.getHeight();                //earlier version
     }
 }

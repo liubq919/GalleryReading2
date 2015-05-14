@@ -1,6 +1,7 @@
 package com.example.hilcg.galleryreading2;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -25,7 +26,9 @@ import com.liu.common.CommonUtility;
 import com.liu.common.ImageUtil;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
@@ -84,81 +87,255 @@ public class MainActivity extends ActionBarActivity {
 
                 if ( mSelectPath.size() > 0 && mSelectPath.get(0) != null )
                 {
-//                    Log.i("OM of Pic1:！", ImageUtil.getOMOfPic(BitmapFactory.decodeFile(mSelectPath.get(0))).toString());
                     pic1OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(0) ));
                     allPicOMList.add(pic1OM);
-
-//                    Toast.makeText(MainActivity.this, "OM of Pic1:！" + pic1OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 1 && mSelectPath.get(1) != null )
                 {
                     pic2OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(1) ));
                     allPicOMList.add(pic2OM);
-
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic2OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 2 && mSelectPath.get(2) != null )
                 {
                     pic3OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(2) ));
                     allPicOMList.add(pic3OM);
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic3OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 3 && mSelectPath.get(3) != null )
                 {
                     pic4OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(3) ));
                     allPicOMList.add(pic4OM);
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic4OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 4 && mSelectPath.get(4) != null )
                 {
                     pic5OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(4) ));
                     allPicOMList.add(pic5OM);
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic5OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 5 && mSelectPath.get(5) != null )
                 {
                     pic6OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(5) ));
                     allPicOMList.add(pic6OM);
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic6OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 6 && mSelectPath.get(6) != null )
                 {
                     pic7OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(6) ));
                     allPicOMList.add(pic7OM);
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic7OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 7 && mSelectPath.get(7) != null )
                 {
                     pic8OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(7) ));
                     allPicOMList.add(pic8OM);
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic8OM, Toast.LENGTH_SHORT).show();
                 }
 
                 if ( mSelectPath.size() > 8 && mSelectPath.get(8) != null )
                 {
                     pic9OM = ImageUtil.getOMOfPic(BitmapFactory.decodeFile( mSelectPath.get(8) ));
                     allPicOMList.add(pic9OM);
-//                    Toast.makeText(MainActivity.this, "OM of Pic2:！" + pic9OM, Toast.LENGTH_SHORT).show();
                 }
 
 //                CommonUtility.compareOMOfAllPic(allPicOMList);
-                if ( 2 == CommonUtility.isTheSamePic(allPicOMList).size() )
+
+                Set<Integer> allSamePics = CommonUtility.isTheSamePic(allPicOMList);
+
+                int theBestPic = CommonUtility.remSamePic(CommonUtility.removeUnSamePic(allSamePics, allPicOMList));
+
+                if ( 2 == allSamePics.size() )
                 {
 
+                    Bitmap bitmap1 = null;
+                    Bitmap bitmap2 = null;
+
+                    Object[] allSamePicArray = allSamePics.toArray();
+
+                    if ( allSamePicArray[0] == 0 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(0) );
+                    }else if ( allSamePicArray[0] == 1 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(1) );
+                    }else if ( allSamePicArray[0] == 2 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(2) );
+                    }else if ( allSamePicArray[0] == 3 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(3) );
+                    }else if ( allSamePicArray[0] == 4 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(4) );
+                    }else if ( allSamePicArray[0] == 5 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(5) );
+                    }else if ( allSamePicArray[0] == 6 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(6) );
+                    }else if ( allSamePicArray[0] == 7 )
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(7) );
+                    }else
+                    {
+                        bitmap1 = BitmapFactory.decodeFile( mSelectPath.get(8 ));
+                    }
+
+                    if ( allSamePicArray[1] == 0 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(0) );
+                    }else if ( allSamePicArray[1] == 1 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(1) );
+                    }else if ( allSamePicArray[1] == 2 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(2) );
+                    }else if ( allSamePicArray[1] == 3 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(3) );
+                    }else if ( allSamePicArray[1] == 4 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(4) );
+                    }else if ( allSamePicArray[1] == 5 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(5) );
+                    }else if ( allSamePicArray[1] == 6 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(6) );
+                    }else if ( allSamePicArray[1] == 7 )
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(7) );
+                    }else
+                    {
+                        bitmap2 = BitmapFactory.decodeFile( mSelectPath.get(8 ));
+                    }
+
+                    int bitmapsize1 = ImageUtil.getBitmapSize(bitmap1);
+                    int bitmapsize2 = ImageUtil.getBitmapSize(bitmap2);
+
+                    if ( bitmapsize1 > bitmapsize2 )
+                    {
+                        if ( allSamePicArray[1] == 0 )
+                        {
+                            imageView1.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[1] == 1 )
+                        {
+                            imageView2.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[1] == 2 )
+                        {
+                            imageView3.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[1] == 3 )
+                        {
+                            imageView4.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[1] == 4 )
+                        {
+                            imageView5.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[1] == 5 )
+                        {
+                            imageView6.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[1] == 6 )
+                        {
+                            imageView7.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[1] == 7 )
+                        {
+                            imageView8.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else
+                        {
+                            imageView9.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }
+                    }
+                    else
+                    {
+                        if ( allSamePicArray[0] == 0 )
+                        {
+                            imageView1.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[0] == 1 )
+                        {
+                            imageView2.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[0] == 2 )
+                        {
+                            imageView3.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[0] == 3 )
+                        {
+                            imageView4.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[0] == 4 )
+                        {
+                            imageView5.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[0] == 5 )
+                        {
+                            imageView6.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[0] == 6 )
+                        {
+                            imageView7.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else if ( allSamePicArray[0] == 7 )
+                        {
+                            imageView8.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }else
+                        {
+                            imageView9.setImageBitmap(BitmapFactory.decodeFile( null ));
+                        }
+                    }
+
                 }
-                else
+                else if( allSamePics.size() >= 3)
                 {
+                    System.out.println("The best pic:" + theBestPic);
+
+                    int i = 0;
+
+//                    Toast.makeText(MainActivity.this, "allSamePics.size():" + allSamePics.size(), Toast.LENGTH_SHORT).show();
+
+                    Iterator<Integer> iterator = allSamePics.iterator();
+
+                    while( iterator.hasNext() )
+                    {
+                        if ( i == theBestPic )
+                        {
+                            iterator.next();
+                            i ++;
+                            continue;
+
+                        }
+
+                        switch ( iterator.next() )
+                        {
+                            case 0:
+                                imageView1.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 1:
+                                imageView2.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 2:
+                                imageView3.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 3:
+                                imageView4.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 4:
+                                imageView5.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 5:
+                                imageView6.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 6:
+                                imageView7.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 7:
+                                imageView8.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            case 8:
+                                imageView9.setImageBitmap(BitmapFactory.decodeFile( null ));
+                                break;
+                            default:
+                                break;
+                        }
+
+                        i ++;
+//                        Toast.makeText(MainActivity.this, "next():" + iterator.next(), Toast.LENGTH_SHORT).show();
+                    }
 
                 }
-
-
 
             }
         });

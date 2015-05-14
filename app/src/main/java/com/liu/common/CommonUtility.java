@@ -117,14 +117,14 @@ public class CommonUtility {
             }
         }
 
-//        System.out.println("allSamePicIndex1:" + allSamePicIndexSet.toString());
+        System.out.println("allSamePicIndex1:" + allSamePicIndexSet.toString());
 //        Log.e("allSamePicIndex2:", allSamePicIndexSet.toString());
 
         return allSamePicIndexSet;
     }
 
 
-    public static Set<Integer> remSamePic(List<List<Integer>> allPicOMList)
+    public static int remSamePic(List<List<Integer>> allPicOMList)
     {
 
         Map<Integer, Double> allDisBetMap = new HashMap<Integer, Double>();
@@ -152,18 +152,28 @@ public class CommonUtility {
             }
         }
 
-        Iterator<Integer> iter = allDisBetMap.keySet().iterator();
+        Iterator<Integer> iterator = allDisBetMap.keySet().iterator();
 
-        while (iter.hasNext()) {
+        Double maxValue = 0.00;
+        int maxValueIndex = 0;
 
-            Integer key = iter.next();
-            Double value = allDisBetMap.get(key);
+        while( iterator.hasNext() )
+        {
+            Integer key = iterator.next();
 
-            System.out.println("key: " + key + "; value:" + value);
+            if ( maxValue == 0.00 || allDisBetMap.get(key) > maxValue)
+            {
+                maxValueIndex = key.intValue();
+                maxValue = allDisBetMap.get(key);
+            }
+
+//            System.out.println("Index:" + key + "; value:" + allDisBetMap.get(key));
 
         }
 
-        return null;
+//        System.out.println(maxValueIndex);
+
+        return maxValueIndex;
     }
 
     public static List<List<Integer>> removeUnSamePic(Set<Integer> allSamePics, List<List<Integer>> allPicOMList)
