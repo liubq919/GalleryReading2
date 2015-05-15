@@ -161,13 +161,13 @@ public class CommonUtility {
         {
             Integer key = iterator.next();
 
-            if ( maxValue == 0.00 || allDisBetMap.get(key) > maxValue)
+            if ( maxValue == 0.00 || allDisBetMap.get(key) < maxValue)
             {
                 maxValueIndex = key.intValue();
                 maxValue = allDisBetMap.get(key);
             }
 
-//            System.out.println("Index:" + key + "; value:" + allDisBetMap.get(key));
+            System.out.println("Index:" + key + "; value:" + allDisBetMap.get(key));
 
         }
 

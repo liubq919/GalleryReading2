@@ -143,8 +143,6 @@ public class MainActivity extends ActionBarActivity {
 
                 Set<Integer> allSamePics = CommonUtility.isTheSamePic(allPicOMList);
 
-                int theBestPic = CommonUtility.remSamePic(CommonUtility.removeUnSamePic(allSamePics, allPicOMList));
-
                 if ( 2 == allSamePics.size() )
                 {
 
@@ -280,7 +278,9 @@ public class MainActivity extends ActionBarActivity {
                 }
                 else if( allSamePics.size() >= 3)
                 {
-                    System.out.println("The best pic:" + theBestPic);
+                    int theBestPic = CommonUtility.remSamePic(CommonUtility.removeUnSamePic(allSamePics, allPicOMList));
+
+//                    System.out.println("The best pic:" + theBestPic);
 
                     int i = 0;
 
