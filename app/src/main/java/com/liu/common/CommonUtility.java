@@ -25,12 +25,9 @@ public class CommonUtility {
 
         ArrayList<Integer> unSortedList = new ArrayList<Integer>();
         unSortedList = (ArrayList<Integer>)list.clone();
-        System.out.println( "j:" + unSortedList);
 
         Collections.sort(list);
         Collections.reverse(list);
-
-        System.out.println( "i:" + list);
 
         ArrayList<Integer> sortedIndexOfArrayList = new ArrayList<Integer>();
 
@@ -40,8 +37,6 @@ public class CommonUtility {
             {
                 if ( list.get(j) == unSortedList.get(i) )
                 {
-//                    System.out.println("i: " + i + "; " + "j: " + j + ", Current Value:" + list.get(i));
-
                     sortedIndexOfArrayList.add( j + 1);
                 }
             }
@@ -51,12 +46,14 @@ public class CommonUtility {
 
     }
 
+    //对两张图片进行比较，确定两者重复
     public static boolean distanceBetOMAndOverThre(List<Integer> listA, List<Integer> listB)
     {
 
         return distanceBetOM( listA, listB) < 10 ? true : false;
     }
 
+    //通过两张图片的OM值，来计算之间的距离
     public static double distanceBetOM(List<Integer> listA, List<Integer> listB)
     {
         double disBetOM = 0;
@@ -94,9 +91,10 @@ public class CommonUtility {
             }
         }
 
-        System.out.println("AllOMlist:" + allOMList.toString());
+//        System.out.println("AllOMlist:" + allOMList.toString());
     }
 
+    //
     public static Set<Integer> isTheSamePic(List<List<Integer>> allPicOMList)
     {
 
@@ -117,13 +115,13 @@ public class CommonUtility {
             }
         }
 
-        System.out.println("allSamePicIndex1:" + allSamePicIndexSet.toString());
+//        System.out.println("allSamePicIndex1:" + allSamePicIndexSet.toString());
 //        Log.e("allSamePicIndex2:", allSamePicIndexSet.toString());
 
         return allSamePicIndexSet;
     }
 
-
+    //通过计算OM距离，获取最优的图片的序列号
     public static int remSamePic(List<List<Integer>> allPicOMList)
     {
 
@@ -167,7 +165,7 @@ public class CommonUtility {
                 maxValue = allDisBetMap.get(key);
             }
 
-            System.out.println("Index:" + key + "; value:" + allDisBetMap.get(key));
+//            System.out.println("Index:" + key + "; value:" + allDisBetMap.get(key));
 
         }
 
@@ -176,6 +174,7 @@ public class CommonUtility {
         return maxValueIndex;
     }
 
+    //移除不相同，不重复的图片
     public static List<List<Integer>> removeUnSamePic(Set<Integer> allSamePics, List<List<Integer>> allPicOMList)
     {
         Iterator<Integer> iterator = allSamePics.iterator();

@@ -173,16 +173,22 @@ public class ImageUtil {
         return CommonUtility.sortIndexOfList(brightVauleList);
     }
 
+    //获取图片的内存大小
     public static int getBitmapSize(Bitmap bitmap)
     {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){    //API 19
+        //API 19
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+        {
             return bitmap.getAllocationByteCount();
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1){//API 12
+        //API 12
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR1)
+        {
             return bitmap.getByteCount();
         }
 
-        return bitmap.getRowBytes() * bitmap.getHeight();                //earlier version
+        //earlier version
+        return bitmap.getRowBytes() * bitmap.getHeight();
     }
 }

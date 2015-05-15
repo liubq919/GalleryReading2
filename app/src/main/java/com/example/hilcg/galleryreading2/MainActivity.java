@@ -4,23 +4,13 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.database.Cursor;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.provider.MediaStore;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.liu.common.CommonUtility;
 import com.liu.common.ImageUtil;
@@ -143,6 +133,7 @@ public class MainActivity extends ActionBarActivity {
 
                 Set<Integer> allSamePics = CommonUtility.isTheSamePic(allPicOMList);
 
+                //如果重复的只有两张图片
                 if ( 2 == allSamePics.size() )
                 {
 
@@ -276,11 +267,10 @@ public class MainActivity extends ActionBarActivity {
                     }
 
                 }
+                //重复的图片大于或者等于三张
                 else if( allSamePics.size() >= 3)
                 {
                     int theBestPic = CommonUtility.remSamePic(CommonUtility.removeUnSamePic(allSamePics, allPicOMList));
-
-//                    System.out.println("The best pic:" + theBestPic);
 
                     int i = 0;
 
@@ -389,7 +379,8 @@ public class MainActivity extends ActionBarActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null) {
+        if (requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null)
+        {
 
             imageView1.setImageBitmap(BitmapFactory.decodeFile( null ));
             imageView2.setImageBitmap(BitmapFactory.decodeFile( null ));
@@ -403,7 +394,7 @@ public class MainActivity extends ActionBarActivity {
 
             mSelectPath = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
 
-            // Now we need to set the GUI ImageView data with data read from the picked file.
+            //根据选择的图片的数量，来显示图片
             if ( mSelectPath.size() > 0 && mSelectPath.get(0) != null )
             {
                 imageView1.setImageBitmap(BitmapFactory.decodeFile( mSelectPath.get(0) ));
